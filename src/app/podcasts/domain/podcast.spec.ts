@@ -4,7 +4,7 @@ it('is a valid Podcast', () => {
   expect(
     new Podcast({
       title: 'Podcast 1',
-      description: 'this is a podcast description',
+      summary: 'this is a podcast summary',
       addedAt: new Date(2012, 1, 1),
     }).title
   ).toEqual('Lavazza Espresso');
@@ -12,10 +12,10 @@ it('is a valid Podcast', () => {
   expect(
     new Podcast({
       title: 'Podcast 1',
-      description: 'this is a podcast description',
+      summary: 'this is a podcast summary',
       addedAt: new Date(2012, 1, 1),
-    }).description
-  ).toEqual('this is a podcast description');
+    }).summary
+  ).toEqual('this is a podcast summary');
 });
 
 it.skip('getDate', () => {
@@ -23,7 +23,7 @@ it.skip('getDate', () => {
   expect(
     new Podcast({
       title: 'Podcast 1',
-      description: 'this is a podcast description',
+      summary: 'this is a podcast summary',
       addedAt: new Date(2012, 1, 1),
     }).getDate()
   ).toEqual('2012-01-31T23:00:00.000Z');

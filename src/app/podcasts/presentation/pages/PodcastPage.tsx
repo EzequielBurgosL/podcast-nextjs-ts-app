@@ -1,6 +1,6 @@
 import React from 'react';
 import { Podcast } from '../../domain/podcast';
-import { PodcastCard } from '../components/Card';
+import { Card } from '../components/Card';
 
 type Props = {
   data: Podcast[];
@@ -8,15 +8,17 @@ type Props = {
 
 export const PodcastPage: React.FC<Props> = ({ data }) => {
   return (
-    <div className=" mx-10 mt-12 px-10">
-      <h1 className="text-3xl mb-10">Welcome to Inditex podcasts</h1>
-      {data.map((podcast) => (
-        <PodcastCard
-          title={podcast.title}
-          description={podcast.description}
-          date={podcast.getDate()}
-        />
-      ))}
+    <div className="page-container">
+      <h1 className="page-title">Podcaster</h1>
+      <div className="cards">
+        {data.map((podcast) => {
+          return <Card
+            title={podcast.title}
+            author={podcast.author}
+            imageUrl={podcast.imageUrl}
+          />
+        })}
+      </div>
     </div>
   );
 };

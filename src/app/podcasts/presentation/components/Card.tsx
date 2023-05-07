@@ -1,15 +1,19 @@
 import React from 'react';
 
-export const PodcastCard: React.FC<{
+export const Card: React.FC<{
   title: string;
-  description: string;
-  date: string;
-}> = ({ title, description, date }) => {
+  author: string;
+  imageUrl: string;
+}> = ({ title, author, imageUrl }) => {
   return (
-    <div className="border border-black">
-      <h1 className="text-5xl text-primary">{title}</h1>
-      <p className="mt-2 text-sm text-grey">{description}</p>
-      <p className="mt-2 text-sm text-grey">{date}</p>
+    <div className="card">
+      <div className="card-image">
+        <img src={imageUrl} alt="podcast image" />
+      </div>
+      <div className="card-info">
+        <h1 className="card-title">{title}</h1>
+        <p className="card-author">{author}</p>
+      </div>
     </div>
   );
 };
