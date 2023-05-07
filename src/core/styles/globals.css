@@ -38,3 +38,23 @@
 .card-title {
   font-size: 18px;
 }
+
+.sidebar {
+  flex: 1 0 21%;
+  background: #FFFFFF;
+  border: 1px solid #E7E3D9;
+  width: 200px;
+  max-width: 200px;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+}
+
+.sidebar-info {
+  margin-top: auto;
+}
+
+.sidebar-title {
+  font-size: 18px;
+}

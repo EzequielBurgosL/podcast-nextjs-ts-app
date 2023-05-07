@@ -6,13 +6,13 @@ type Props = {
   data: Podcast[];
 };
 
-export const PodcastPage: React.FC<Props> = ({ data }) => {
+export const PodcastPage = ({ data }: Props) => {
   const [filterText, setFilterText] = useState('');
 
-  const filteredPodcasts = data.filter(podcast =>
+  const filteredPodcasts: Podcast[] = data.filter(podcast =>
     `${podcast.title} ${podcast.author}`
-    .toLowerCase()
-    .includes(filterText.toLowerCase())
+      .toLowerCase()
+      .includes(filterText.toLowerCase())
   );
 
   const handleFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -34,11 +34,16 @@ export const PodcastPage: React.FC<Props> = ({ data }) => {
       </div>
       <div className="cards">
         {filteredPodcasts.map((podcast) => {
-          return <Card
-            title={podcast.title}
-            author={podcast.author}
-            imageUrl={podcast.imageUrl}
-          />
+          return (
+            <Card
+              key={podcast.getId()}
+              title={podcast.title}
+              author={podcast.author}
+              imageUrl={podcast.imageUrl}
+              id={podcast.getId()}
+              summary={podcast.summary}
+            />
+          )
         })}
       </div>
     </div>
