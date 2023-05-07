@@ -41,20 +41,63 @@
 
 .sidebar {
   flex: 1 0 21%;
-  background: #FFFFFF;
-  border: 1px solid #E7E3D9;
+  display: flex;
+  flex-direction: column;
   width: 200px;
   max-width: 200px;
   min-width: 200px;
-  display: flex;
-  flex-direction: column;
   padding: 16px;
-}
-
-.sidebar-info {
-  margin-top: auto;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
 }
 
 .sidebar-title {
   font-size: 18px;
+}
+
+.detail-page {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.detail-page-content {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.episodes-counter {
+  font-size: 30px;
+  font-weight: bold;
+  padding: 20px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
+}
+
+.episodes-table{
+  padding: 20px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.25);
+}
+
+.table {
+  border-collapse: collapse;
+}
+
+.table th {
+  font-weight: bold;
+  border-bottom: 2px solid lightgray;
+  padding: 10px;
+  text-align: left;
+}
+
+.table td {
+  border-bottom: 1px solid lightgray;
+  padding: 10px;
+}
+
+.table .even-row {
+  background-color: rgba(211, 211, 211, 0.3)
+}
+
+.table .odd-row {
+  background-color: white;
 }
