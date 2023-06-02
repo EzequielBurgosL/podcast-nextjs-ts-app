@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import { fetchPodcastService } from '../../application/fetchPodcastService';
-import { EpisodeDetail } from '../components/EpisodeDetail';
-import { EpisodesTable } from '../components/EpisodesTable';
-import { SideBar } from '../components/SideBar';
+import React, { useEffect, useState } from "react";
+import { fetchPodcastService } from "../../application/fetchPodcastService";
+import { EpisodeDetail } from "../components/EpisodeDetail";
+import { EpisodesTable } from "../components/EpisodesTable";
+import { SideBar } from "../components/SideBar";
 
 type Props = {
   title: string;
@@ -10,20 +10,22 @@ type Props = {
   imageUrl: string;
   id: string;
   summary: string;
-}
+};
 
 export const PodcastDetail: React.FC = ({ data }: { data: Props }) => {
   const [episodes, setEpisodes] = useState([]);
   const [selectedEpisode, setSelectedEpisode] = useState(null);
 
   useEffect(() => {
-    fetchPodcastService.getInstance().fetchPodcastEpisodes(data.id)
-      .then(response => setEpisodes(response));
+    fetchPodcastService
+      .getInstance()
+      .fetchPodcastEpisodes(data.id)
+      .then((response) => setEpisodes(response));
   }, []);
 
   const handleClick = (episode) => {
     setSelectedEpisode(episode);
-  }
+  };
 
   return (
     <div className="detail-page">
@@ -35,11 +37,15 @@ export const PodcastDetail: React.FC = ({ data }: { data: Props }) => {
         handleClick={handleClick}
       />
       <div className="detail-page-content">
-        {selectedEpisode ?
-          <EpisodeDetail episode={selectedEpisode} /> :
-          <EpisodesTable episodes={episodes} handleClick={handleClick}/>
-        }
+        {selectedEpisode ? (
+          <EpisodeDetail episode={selectedEpisode} />
+        ) : (
+          <EpisodesTable
+            episodes={episodes}
+            handleGoToEpisodeDetail={handleClick}
+          />
+        )}
       </div>
     </div>
-  )
+  );
 };

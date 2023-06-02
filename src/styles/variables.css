@@ -1,17 +1,21 @@
 :root {
   /* Fonts */
-  --font-size-small: 18px;
-  --font-size-medium: 18px;
-  --font-size-big: 18px;
+  --font-size-xs: 12px;
+  --font-size-s: 14px;
+  --font-size-sm: 16px;
+  --font-size-m: 18px;
+  --font-size-l: 22px;
 
   --font-weight-light: lighter;
   --font-weight-regular: normal;
-  --font-weight-light: bold;
+  --font-weight-bold: bold;
 
   /* Colors */
   --color-white: #fff;
+  --color-primary-main: gray;
   --color-primary-light: lightgray;
-  --color-secondary-light: #e7e3d9;
+  --color-primary-ligther: #e7e3d9;
+  --color-secondary-dark: steelblue;
 
   /* Shadows */
   --box-shadow-card: 1px 1px 5px rgba(0, 0, 0, 0.25);

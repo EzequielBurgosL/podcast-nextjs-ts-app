@@ -1,0 +1,43 @@
+.fs-xs {
+  font-size: var(--font-size-xs);
+}
+
+.fs-s {
+  font-size: var(--font-size-s);
+}
+
+.fs-sm {
+  font-size: var(--font-size-sm);
+}
+
+.fs-m {
+  font-size: var(--font-size-m);
+}
+
+.fs-l {
+  font-size: var(--font-size-l);
+}
+
+.fw-light {
+  font-weight: var(--font-weight-light);
+}
+
+.fw-regular {
+  font-weight: var(--font-weight-regular);
+}
+
+.fw-bold {
+  font-weight: var(--font-weight-bold);
+}
+
+.fst-italic {
+  font-style: italic;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
