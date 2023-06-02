@@ -1,0 +1,15 @@
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 20px 10px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: var(--color-white);
+  border-bottom: 1px solid var(--color-primary-light);
+}
+
+.page-title {
+  cursor: pointer;
+  color: var(--color-secondary-dark);
+}

@@ -18,6 +18,10 @@
   font-size: var(--font-size-l);
 }
 
+.fs-xl {
+  font-size: var(--font-size-xl);
+}
+
 .fw-light {
   font-weight: var(--font-weight-light);
 }

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { fetchPodcastService } from "../../application/fetchPodcastService";
 import { EpisodeDetail } from "../components/EpisodeDetail";
 import { EpisodesTable } from "../components/EpisodesTable";
+import { PageContainer } from "../components/PageContainer";
 import { SideBar } from "../components/SideBar";
 
 type Props = {
@@ -28,24 +29,26 @@ export const PodcastDetail: React.FC = ({ data }: { data: Props }) => {
   };
 
   return (
-    <div className="detail-page">
-      <SideBar
-        summary={data.summary}
-        title={data.title}
-        author={data.author}
-        imageUrl={data.imageUrl}
-        handleClick={handleClick}
-      />
-      <div className="detail-page-content">
-        {selectedEpisode ? (
-          <EpisodeDetail episode={selectedEpisode} />
-        ) : (
-          <EpisodesTable
-            episodes={episodes}
-            handleGoToEpisodeDetail={handleClick}
-          />
-        )}
+    <PageContainer>
+      <div className="detail-page">
+        <SideBar
+          summary={data.summary}
+          title={data.title}
+          author={data.author}
+          imageUrl={data.imageUrl}
+          handleClick={handleClick}
+        />
+        <div className="detail-page-content">
+          {selectedEpisode ? (
+            <EpisodeDetail episode={selectedEpisode} />
+          ) : (
+            <EpisodesTable
+              episodes={episodes}
+              handleGoToEpisodeDetail={handleClick}
+            />
+          )}
+        </div>
       </div>
-    </div>
+    </PageContainer>
   );
 };

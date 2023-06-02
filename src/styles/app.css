@@ -2,6 +2,8 @@
 @import "components/card.css";
 @import "components/table.css";
 @import "components/sidebar.css";
+@import "components/filter.css";
+@import "components/header.css";
 
 .detail-page {
   display: flex;

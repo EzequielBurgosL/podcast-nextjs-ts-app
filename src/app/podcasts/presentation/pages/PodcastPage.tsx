@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Podcast } from "../../domain/podcast";
 import { Card } from "../components/Card";
+import { PageContainer } from "../components/PageContainer";
 
 type Props = {
   data: Podcast[];
@@ -20,8 +21,7 @@ export const PodcastPage = ({ data }: Props): JSX.Element => {
   };
 
   return (
-    <div className="page-container">
-      <h1 className="page-title">Podcaster</h1>
+    <PageContainer>
       <div className="filter">
         <label htmlFor="filter-input">{filteredPodcasts.length}</label>
         <input
@@ -46,6 +46,6 @@ export const PodcastPage = ({ data }: Props): JSX.Element => {
           );
         })}
       </div>
-    </div>
+    </PageContainer>
   );
 };
