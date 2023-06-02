@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
-import { Podcast } from '../../domain/podcast';
-import { Card } from '../components/Card';
+import React, { useState } from "react";
+import { Podcast } from "../../domain/podcast";
+import { Card } from "../components/Card";
 
 type Props = {
   data: Podcast[];
 };
 
-export const PodcastPage = ({ data }: Props) => {
-  const [filterText, setFilterText] = useState('');
+export const PodcastPage = ({ data }: Props): JSX.Element => {
+  const [filterText, setFilterText] = useState("");
 
-  const filteredPodcasts: Podcast[] = data.filter(podcast =>
+  const filteredPodcasts: Podcast[] = data.filter((podcast) =>
     `${podcast.title} ${podcast.author}`
       .toLowerCase()
       .includes(filterText.toLowerCase())
@@ -43,7 +43,7 @@ export const PodcastPage = ({ data }: Props) => {
               id={podcast.getId()}
               summary={podcast.summary}
             />
-          )
+          );
         })}
       </div>
     </div>

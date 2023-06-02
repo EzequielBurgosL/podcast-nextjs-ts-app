@@ -1,7 +1,7 @@
-import { Podcast } from '../domain/podcast';
+import { BasePodcast, Podcast } from '../domain/podcast';
 
 export const PodcastMapper = {
-  toDomain: (data: any) => {
+  toDomain: (data): BasePodcast => {
     return new Podcast({
       id: data.id || '',
       title: data.title || '',

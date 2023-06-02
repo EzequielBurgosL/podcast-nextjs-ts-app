@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { fetchPodcastService } from '../../application/fetchPodcastService';
+import { EpisodeDetail } from '../components/EpisodeDetail';
+import { EpisodesTable } from '../components/EpisodesTable';
 import { SideBar } from '../components/SideBar';
 
 type Props = {
@@ -12,11 +14,16 @@ type Props = {
 
 export const PodcastDetail: React.FC = ({ data }: { data: Props }) => {
   const [episodes, setEpisodes] = useState([]);
+  const [selectedEpisode, setSelectedEpisode] = useState(null);
 
   useEffect(() => {
     fetchPodcastService.getInstance().fetchPodcastEpisodes(data.id)
       .then(response => setEpisodes(response));
   }, []);
+
+  const handleClick = (episode) => {
+    setSelectedEpisode(episode);
+  }
 
   return (
     <div className="detail-page">
@@ -25,37 +32,13 @@ export const PodcastDetail: React.FC = ({ data }: { data: Props }) => {
         title={data.title}
         author={data.author}
         imageUrl={data.imageUrl}
+        handleClick={handleClick}
       />
       <div className="detail-page-content">
-        <div className="episodes-counter">
-          <h1>Episodes: {episodes.length}</h1>
-        </div>
-        <div className="episodes-table">
-          {!!episodes.length && (
-            <table className="table">
-              <thead>
-                <tr>
-                  <th>Title</th>
-                  <th>Date</th>
-                  <th>Duration</th>
-                </tr>
-              </thead>
-              <tbody>
-                {episodes.map((episode, index) => {
-                  const rowClass = index % 2 === 0 ? 'even-row' : 'odd-row';
-
-                  return (
-                    <tr key={episode.id} className={rowClass}>
-                      <td>{episode.title}</td>
-                      <td>{episode.date}</td>
-                      <td>{episode.duration}</td>
-                    </tr>
-                  )
-                })}
-              </tbody>
-            </table>
-          )}
-        </div>
+        {selectedEpisode ?
+          <EpisodeDetail episode={selectedEpisode} /> :
+          <EpisodesTable episodes={episodes} handleClick={handleClick}/>
+        }
       </div>
     </div>
   )

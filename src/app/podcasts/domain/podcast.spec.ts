@@ -3,6 +3,9 @@ import { Podcast } from './podcast';
 it('is a valid Podcast', () => {
   expect(
     new Podcast({
+      id: 'asdf',
+      author: 'john doe',
+      imageUrl: 'http://image.src',
       title: 'Podcast 1',
       summary: 'this is a podcast summary',
       addedAt: new Date(2012, 1, 1),
@@ -11,6 +14,9 @@ it('is a valid Podcast', () => {
 
   expect(
     new Podcast({
+      id: 'asdf',
+      author: 'john doe',
+      imageUrl: 'http://image.src',
       title: 'Podcast 1',
       summary: 'this is a podcast summary',
       addedAt: new Date(2012, 1, 1),
@@ -22,6 +28,9 @@ it.skip('getDate', () => {
   // TODO - Fix me
   expect(
     new Podcast({
+      id: 'asdf',
+      author: 'john doe',
+      imageUrl: 'http://image.src',
       title: 'Podcast 1',
       summary: 'this is a podcast summary',
       addedAt: new Date(2012, 1, 1),

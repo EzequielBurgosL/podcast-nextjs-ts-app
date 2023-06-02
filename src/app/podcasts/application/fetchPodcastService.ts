@@ -1,3 +1,5 @@
+import { EpisodeDTO } from '../domain/episode';
+import { PodcastDTO } from '../domain/podcast';
 import { PodcastApi } from '../infrastructure/podcast.api';
 
 export class fetchPodcastService {
@@ -10,11 +12,11 @@ export class fetchPodcastService {
     return fetchPodcastService.instance;
   }
 
-  async fetchAll() {
+  async fetchAll(): Promise<PodcastDTO[]> {
     return await PodcastApi.getInstance().fetchAll();
   }
 
-  async fetchPodcastEpisodes(id: string) {
+  async fetchPodcastEpisodes(id: string): Promise<EpisodeDTO> {
     return await PodcastApi.getInstance().fetchPodcastEpisodes(id);
   }
 }

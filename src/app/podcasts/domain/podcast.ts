@@ -1,12 +1,30 @@
-export class Podcast {
+export interface PodcastDTO {
+  title: string;
+  summary: string;
+  author: string;
+  imageUrl: string;
+  id: string,
+  addedAt: string
+}
+
+export interface BasePodcast {
+  title: string;
+  summary: string;
+  author: string;
+  imageUrl: string;
+  getDate(): string;
+  getId(): string;
+}
+
+export class Podcast implements BasePodcast {
   title: string;
   summary: string;
   author: string;
   imageUrl: string;
   private id: string;
-  private addedAt: Date;
+  private addedAt: string;
 
-  constructor(data: any) {
+  constructor(data: PodcastDTO) {
     this.id = data.id;
     this.title = data.title;
     this.author = data.author;
@@ -15,11 +33,11 @@ export class Podcast {
     this.addedAt = data.addedAt;
   }
 
-  getDate() {
+  getDate(): string {
     return this.addedAt;
   }
 
-  getId(){
+  getId(): string {
     return this.id;
   }
 }

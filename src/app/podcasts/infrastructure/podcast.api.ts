@@ -1,3 +1,6 @@
+import { EpisodeDTO } from "../domain/episode";
+import { PodcastDTO } from "../domain/podcast";
+
 export class PodcastApi {
   static instance = null;
 
@@ -8,7 +11,7 @@ export class PodcastApi {
     return PodcastApi.instance;
   }
 
-  async fetchAll() {
+  async fetchAll(): Promise<PodcastDTO[]> {
     return await fetch('https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json')
       .then(response => response.json())
       .then(data => {
@@ -20,7 +23,7 @@ export class PodcastApi {
             summary: podcast.summary.label,
             imageUrl: podcast["im:image"].slice(-1)[0].label,
             addedAt: new Date().toISOString()
-          }
+          } as PodcastDTO
         });
       })
       .catch(error => {
@@ -29,7 +32,7 @@ export class PodcastApi {
       });
   }
 
-  async fetchPodcastEpisodes(id: string) {
+  async fetchPodcastEpisodes(id: string): Promise<EpisodeDTO> {
     try {
       const response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(`https://itunes.apple.com/lookup?id=${id}&media=podcast&entity=podcastEpisode&limit=50`)}`);
       const data = await response.json();
@@ -38,15 +41,16 @@ export class PodcastApi {
       }
 
       const parsedData = JSON.parse(data.contents);
-      console.log('parsedData: ', parsedData);
 
       return parsedData.results.map(podcast => {
         return {
           id: podcast.trackId,
           title: podcast.trackName,
           duration: podcast.trackTimeMillis,
-          date: podcast.releaseDate
-        };
+          date: podcast.releaseDate,
+          url: podcast.episodeUrl,
+          description: podcast.description
+        } as EpisodeDTO;
       });
     } catch (error) {
       console.error(error);
